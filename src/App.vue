@@ -1,6 +1,6 @@
 <template>
   <NavComp/>
-  <hr>
+  
   <router-view></router-view>
 </template>
 
@@ -16,12 +16,14 @@ export default {
 </script>
 
 <style>
+
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: #b7dfff66 !important;
+  height: 100%;
+  width: auto;
+  padding: 70px 50px; 
+
+
 }
 </style>
