@@ -7,6 +7,7 @@
 <script>
 import NavComp from './components/NavComp.vue'
 
+
 export default {
   name: 'App',
   components: {
@@ -22,7 +23,7 @@ export default {
   background-color: #b7dfff66 !important;
   height: 100%;
   width: auto;
-  padding: 70px 50px; 
+  padding: 40px 50px; 
 
 
 }

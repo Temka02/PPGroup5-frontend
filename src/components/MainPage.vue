@@ -1,137 +1,431 @@
 <template>
     <div class="mainPage">
+        <h1>Сортировать:</h1>
         <div class="filters">
-            <label for="sorting" class="labelForSort">Сортировка:</label>
-            <select class="selectSort" id="sorting">
-                <option value="dateUp" selected>По дате(возрастание)</option>
-                <option value="dateDown" >По дате(убывание)</option>
-                <option value="distanceUp">По дистанции(возрастание)</option>
-                <option value="distanceDown">По дистанции(убывание)</option>
-                <option value="ratingUp">По рейтингу(возрастание)</option>
-                <option value="ratingDown">По рейтингу(убывание)</option>
-            </select>
+        
+            <div class="sortTime">
+                <select class="selectSort" id="sorting">
+                    <option value="TimeUp" selected>По времени (возрастание)</option>
+                    <option value="TimeDown" >По времени (убывание)</option>
+                </select>
+            </div>
+
+            <div class="sortDist">
+                <select class="selectSort" id="sorting">
+                    <option value="distanceUp">По дистанции (возрастание)</option>
+                    <option value="distanceDown">По дистанции (убывание)</option>
+                </select>
+            </div>
+
+            <div class="sortRate">
+                <select class="selectSort" id="sorting">
+                    <option value="ratingUp">По рейтингу (возрастание)</option>
+                    <option value="ratingDown">По рейтингу (убывание)</option>
+                </select>
+            </div>
+
         </div>
+
         <div class="routes">
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
-            <router-link to="/ViewRoute" class="openMore">
                 <div class="route">
-                    <div class="imgRoute"><img src="../assets/map1.jpg" alt=""></div>
-                    <div class="footerText">
-                        <div class="rating">Оценка:</div>
-                        <div class="distance">Расстояние:</div>
-                        <div class="authorName">Автор: Я</div>
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
                     </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
                 </div>
-            </router-link>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+                <div class="route">
+
+                    <img src="../assets/bike.svg" alt="bike">
+
+                    <div class="routeText">
+                        <div class="distance">Расстояние: 2,2km</div>
+                        <div class="time">Время: 01:12:54</div>
+                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                    </div>
+
+                    <div id="linkToOpenMore">
+                        <router-link to="/ViewRoute" class="routerLinkStyle">Посмотреть подробности</router-link>
+                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                
         </div>
     </div>
 </template>
@@ -148,7 +442,7 @@
 
 </script>
 
-<style>
+<style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
@@ -167,24 +461,33 @@
 
 }
 
-.filters{
-    border-radius: 9px;
-    height: 80px;
+.mainPage h1{
+    padding: 0px;
+    text-align: center;
     width: 100%;
-    padding: 10px 10px
-}
-
-.labelForSort{
-    font-size: 20px;
+    margin: 0px 0px 15px 0px;
+    font-size: 27px;
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 10px;
+    font-weight: 700;
+    padding-top: 25px
+}
+
+.filters{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 9px;
+    height: 67px;
+    width: 100%;
+    padding: 0px 0px 10px 0px
+}
+
+.filters div{
+    width: 32%;
 }
 
 .selectSort{
-    width: 30%;
+    width: 100%;
     height: 48px;
     background-color: #fff;
     border-radius: 5px;
@@ -197,84 +500,92 @@
     color: #2f2f2f;
 }
 
-.openMore{
-    height: 100%;
-    width: 32%;
-    text-decoration: none;
-    color: #000;
-    margin: 0px 5px 0px 0px;
-}
-
-.imgRoute img{
-    height: 100%;
-    width: 100%;
-}
 
 .routes{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
+    width: 90%;
+    margin: 0px auto 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 .route{
+    display: flex;
+    justify-content: space-between;
     border: 3px solid #c3c3c3;
     border-radius: 5px;
-    margin: 15px 0px;
-    height: 280px;
-    width: 100%;
-    
+    margin: 0px auto 15px auto;
+    height: 40px;
+    width: 95%;
+    padding: 10px 5px 10px 15px
 }
 
-.imgRoute{
-    height: 86%;
-    
-}
-
-.footerText{
+.routeText{
     background-color: #fcfcfc;
-    height: 14%;
+    height: 100%;
     display: flex;
+    justify-content: space-around;
     border-top: 3px solid #c3c3c3;
     border-top:0 ;
-}
-
-.footerText p{
-    margin: 0px 0px;
-}
-
-.rating{
-    padding: 9px 3px 1px 5px;
-    border: 1px solid #c3c3c3;
-    width: 60%;
-    height: 30px;
-    vertical-align: middle;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
+    padding-left: 40px;
+    width: 65%;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .distance{
-    height: 30px;
-    padding: 9px 3px 1px 5px;
-    border: 1px solid #c3c3c3;
-    width: 100%;
-    vertical-align: middle;
-    border-right: 0;
-    border-bottom: 0;
+    padding: 8px 7px 8px 0px;
+}
+
+.rating{
+    padding: 8px 7px 8px 0px;    
+}
+
+.rating img{
+    width: 12.5px;
+    height: 12.5px
 }
 
 .authorName{
-    height: 30px;
-    border: 1px solid #c3c3c3;
-    border-right: 0;
-    padding: 9px 3px 1px 5px;
-    width: 100%;
-    vertical-align: middle;
-    border-bottom: 0;
+    padding: 8px 7px 8px 0px;
+    text-decoration: none;
+    color: #000;
 }
 
+.authorName a{
+    text-decoration: none;
+    color: #000;
+}
 
+.time{
+    padding: 8px 7px 8px 0px;
+}
+
+#linkToOpenMore{
+    width: 29%;
+    display: flex;
+    padding: 7px 4px;
+}
+
+#linkToOpenMore img{
+    padding: 0px 4px 0px 8px;
+    width: 24px;
+    height: 24px
+}
+
+.routerLinkStyle{
+    text-align: right;
+    text-decoration: none;
+    color: #000;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+}
 
 
 

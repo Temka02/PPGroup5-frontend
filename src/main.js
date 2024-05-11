@@ -1,5 +1,10 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+// import { createYmaps } from 'vue-yandex-maps';
+
+// app.use(createYmaps({
+//     apikey: 'dd542c73-2757-47f2-9806-6deb743a8696&',
+//   }));
 
 import App from './App.vue'
 import MainPage from './components/MainPage'
@@ -8,6 +13,7 @@ import NotFoundPage from './components/NotFoundPage'
 import AddRoute from './components/AddRoute.vue'
 import ViewRoute from './components/ViewRoute.vue'
 import ProfileAuthorization from './components/ProfileAuthorization.vue'
+import AuthorsProfile from './components/AuthorsProfile.vue'
 
 
 const routes = [
@@ -40,12 +46,19 @@ const routes = [
         path: '/Authorization',
         name: 'ProfileAuthorization',
         component: ProfileAuthorization
+    },
+    {
+        path: '/AuthorsProfile',
+        name: 'AuthorsProfile',
+        component: AuthorsProfile
     }
 ] 
 
 const router = createRouter({
     history: createWebHistory(), routes
 });
+
+
 
 const app = createApp(App);
 app.use(router)

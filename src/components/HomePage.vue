@@ -5,16 +5,149 @@
             <div class="homeInfo">
 
                 <div class="selectedContent">
-                    <div v-if="isActiveMRe" class="ActiveMRe">
-                        <h1>У вас пока нет отзывов</h1>
+                    <div v-if="isActiveFR" class="ActiveFR">
+                        <div class="lackOfFavs" v-if="isLackOfFavs">
+                            <h1>Вы еще не добавили в список желаемого понравившиеся маршруты</h1>
+                            <router-link to="/"><button class="jumpToMain">Перейти на главную страницу</button></router-link>
+                        </div>
+                        <div v-else class="favRoutes">
+                            <h1>Понравившиеся маршруты:</h1>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>
+                            </div>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>
+                            </div>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>                            
+                            </div>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>                            
+                            </div>                            
+                        </div>
                     </div>
                     <div v-else-if="isActiveMRo" class="ActiveMRo">
                         <div class="lackOfRoutes" v-if="isLackOfRoutes">
                             <h1>Пока нет маршрутов</h1>
-                            <router-link to="/AddRoute" class="linkStyleLK"><button class="addNewRoute">Добавить маршрут</button></router-link>
                         </div>
                         <div class="usersRoutes" v-else>
-                            
+                            <h1>Ваши маршруты:</h1>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>
+                            </div>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>
+                            </div>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>                            
+                            </div>
+                            <div class="route">
+
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: 2,2km</div>
+                                    <div class="time">Время: 01:12:54</div>
+                                    <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
+                                    <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                </div>
+
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
+                                </div>                            
+                            </div>
                         </div>
                     </div>
                     <div v-else class="ActivePD">
@@ -110,7 +243,7 @@
                     <h2>Личный кабинет</h2>
                     <button class="staticButton" :class="{ activeButton: isActivePD }" @click="choosePD()">Личные данные</button>
                     <button class="staticButton" :class="{ activeButton: isActiveMRo }" @click="chooseMRotes()">Мои маршруты</button>
-                    <button class="staticButton" :class="{ activeButton: isActiveMRe }" @click="chooseMReviews()">Мои отзывы</button>
+                    <button class="staticButton" :class="{ activeButton: isActiveFR }" @click="chooseFavRoutes()">Список желаемого</button>
                 </div>
 
             </div>
@@ -131,8 +264,9 @@
                 isSaving: true,
                 isActivePD: true,
                 isActiveMRo: false,
-                isActiveMRe: false,
-                isLackOfRoutes: true,
+                isActiveFR: false,
+                isLackOfFavs: false,
+                isLackOfRoutes: false,
                 isAuthorized: false
             }
         },
@@ -140,17 +274,17 @@
             choosePD(){
                 this.isActivePD = true
                 this.isActiveMRo = false
-                this.isActiveMRe = false
+                this.isActiveFR = false
             },
             chooseMRotes(){
                 this.isActivePD = false
                 this.isActiveMRo = true
-                this.isActiveMRe = false
+                this.isActiveFR = false
             },
-            chooseMReviews(){
+            chooseFavRoutes(){
                 this.isActivePD = false
                 this.isActiveMRo = false
-                this.isActiveMRe = true
+                this.isActiveFR = true
             },
             newChanges(){
                 this.isChanging = true
@@ -191,7 +325,6 @@
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    /* background-color: #cddfff4e; */
     background-color: #f1f1f1dd;
     padding-top: 55px;
     border: 3.5px solid #eeeeeedd;
@@ -477,8 +610,7 @@
 
 .ActiveMRo{
     height: 100%;
-    widows: 100%;
-    margin: 50px 30px 20px 30px;
+    margin: 20px 7px;
 }
 
 .ActiveMRo .lackOfRoutes{
@@ -486,16 +618,125 @@
 }
 
 .ActiveMRo .lackOfRoutes h1{
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-size: 28px;
     margin: 0px;
-    padding: 0px;
+    padding: 240px 30px;
 }
 
-.ActiveMRo .lackOfRoutes .addNewRoute{
+.usersRoutes h1{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.route{
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid #c3c3c3;
+    border-radius: 5px;
+    margin: 10px auto 10px auto;
+    height: 40px;
+    width: 95%;
+    padding: 10px 5px;
+}
+
+.routeText{
+    background-color: #fcfcfc;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-top:0 ;
+    padding-left: 15px;
+    width: 75%;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.distance{
+    padding: 8px 7px 8px 0px;
+}
+
+.rating{
+    padding: 8px 7px 8px 0px;    
+}
+
+.rating img{
+    width: 12.5px;
+    height: 12.5px
+}
+
+.authorName{
+    padding: 8px 7px 8px 0px;
+    text-decoration: none;
+    color: #000;
+}
+
+.authorName a{
+    text-decoration: none;
+    color: #000;
+}
+
+.time{
+    padding: 8px 7px 8px 0px;
+}
+
+#linkToOpenMore{
+    width: 19%;
+    display: flex;
+    padding: 7px 4px;
+}
+
+#linkToOpenMore img{
+    padding: 0px 4px 0px 8px;
+    width: 24px;
+    height: 24px
+}
+
+.routerLinkStyle{
+    text-align: right;
+    text-decoration: none;
+    color: #000;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+}
+
+.ActiveFR{
+    height: 100%;
+    margin: 20px 7px;
+
+}
+
+.ActiveFR .lackOfFavs{
+    padding: 240px 30px;
+}
+
+.ActiveFR .lackOfFavs h1{
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-size: 28px;
+    margin: 0px;
+}
+
+.ActiveFR .lackOfFavs .jumpToMain{
+    width:28%;
     border: 3px solid #35cafc;
     border-radius: 5px ;
-    margin: 440px 100px 20px 100px;
     height: 50px;
-    padding: 7px 15px;
     width: 250px;
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
@@ -504,27 +745,24 @@
     word-spacing: 2px;
     cursor: pointer;
     color: #2b2b2b;
+    margin: 190px 35% 20px 35%;
 }
 
-.ActiveMRo .lackOfRoutes .addNewRoute:hover{
+.ActiveFR .lackOfFavs .jumpToMain:hover{
     transition: all 0.4s ease;
     background-color: #35cafc;
     color: #f0efef;
     border: 0;
 }
 
-.ActiveMRe{
-    padding: 270px 0px;
-    
-}
-
-.ActiveMRe h1{
+.ActiveFR .favRoutes h1{
+    margin: 0px;
+    padding: 0px;
     text-align: center;
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 28px;
-    margin: 0px;
 }
 
 .unauthorized{

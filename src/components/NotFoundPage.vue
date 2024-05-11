@@ -1,7 +1,6 @@
 <template>
     <div>
-        <router-link to="/">На главную</router-link>
-        <img src="../assets/error.jpg" alt="error">
+        <router-link to="/"><img src="../assets/error.jpg" alt="error"></router-link>
     </div>
 </template>
 
