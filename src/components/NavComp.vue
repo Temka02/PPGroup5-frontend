@@ -20,10 +20,6 @@
 <script>
 export default {
   name: 'NavComp',
-  props: {
-  },
-  methods:{
-  }  
 }
 </script>
 
