@@ -1,0 +1,6 @@
+# Использовать LF для всех текстовых файлов
+* text=auto eol=lf
+
+# Использовать CRLF для файлов, специфичных для Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
