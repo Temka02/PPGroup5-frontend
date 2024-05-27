@@ -1,12 +1,9 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-// import { createYmaps } from 'vue-yandex-maps';
+import { createYmaps } from 'vue-yandex-maps';
 
-// app.use(createYmaps({
-//     apikey: 'dd542c73-2757-47f2-9806-6deb743a8696&',
-//   }));
 
-import App from './App.vue'
+import App from './App.vue';
 import MainPage from './components/MainPage'
 import HomePage from './components/HomePage'
 import NotFoundPage from './components/NotFoundPage'
@@ -54,12 +51,37 @@ const routes = [
     }
 ] 
 
+
 const router = createRouter({
-    history: createWebHistory(), routes
+    history: createWebHistory(),
+    routes
 });
 
-
-
 const app = createApp(App);
+
+app.use(createYmaps({
+    apikey: '95d5e46b-2d2b-4dbc-8676-15f2d7acfb49',
+  }));
 app.use(router)
 app.mount('#app')
+
+
+
+// initYmaps(settings).then(() => {
+//     const app = createApp(App);
+//     
+
+
+//     
+//     app.mount('#app');
+//   }).catch(error => {
+//     console.error('Ошибка инициализации Яндекс.Карт:', error);
+//   });
+
+// const app = createApp(App);
+// 
+
+
+
+
+// app.mount('#app')

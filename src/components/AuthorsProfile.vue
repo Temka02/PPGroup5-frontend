@@ -1,65 +1,79 @@
 <template>
     <div class="authorProfile">
+
         <div class="usersRoutes">
+
             <h1>Маршруты пользователя</h1>
-                <div class="route">
+            
+                <div class="existRoutes"  v-if="isExistRoutes">
+                    <div v-if="(this.currentAuthStatus)">
+                        <div v-for="route in userRoutes" :key="route.id">
+                            <div class="route">
 
-                    <img src="../assets/bike.svg" alt="bike">
+                                <img src="../assets/bike.svg" alt="bike">
 
-                    <div class="routeText">
-                        <div class="distance">Расстояние: 2,2km</div>
-                        <div class="time">Время: 01:12:54</div>
-                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
-                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: {{ route.distance }}km</div>
+                                    <div class="time">Время: {{ route.users_travel_time }}</div>
+                                    <div class="authorName">Автор: {{ route.user_name }}</div>
+
+                                    <div v-if="route.avg_estimation === null" class="lackRating">Оценки нет</div>
+                    
+                                    <div v-else class="rating"><p>Оценка: {{route.avg_estimation}} </p> <img src="../assets/star.svg" alt="star"></div> 
+                                </div>
+                                
+                                <div id="linkToOpenMore">
+                                    <router-link to="/ViewRoute" class="routerLinkStyle" @click="saveRouteID(Number(route.route_id))">Подробности</router-link>
+                                    <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more" @click="saveRouteID(Number(route.route_id))"></router-link>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                    <div id="linkToOpenMore">
-                        <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
-                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
-                    </div>
+                    <div v-else>
+                        <div v-for="route in userRoutes" :key="route.id">
+                            <div class="route">
 
+                                <img src="../assets/bike.svg" alt="bike">
+
+                                <div class="routeText">
+                                    <div class="distance">Расстояние: {{ route.distance }}km</div>
+                                    <div class="time">Время: {{ route.users_travel_time }}</div>
+                                    <div class="authorName">Автор: {{ route.user_name }}</div>
+
+                                    <div v-if="route.avg_estimation === null" class="lackRating">Оценки нет</div>
+                    
+                                    <div v-else class="rating"><p>Оценка: {{route.avg_estimation}} </p> <img src="../assets/star.svg" alt="star"></div> 
+                                </div>
+                                
+                                <div id="linkToOpenMore">
+                                    <router-link to="/lk" class="routerLinkStyle" @click="saveRouteID(Number(route.route_id))">Подробности</router-link>
+                                    <router-link to="/lk"><img src="../assets/more.svg" alt="more" @click="saveRouteID(Number(route.route_id))"></router-link>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="route">
 
-                    <img src="../assets/bike.svg" alt="bike">
-
-                    <div class="routeText">
-                        <div class="distance">Расстояние: 2,2km</div>
-                        <div class="time">Время: 01:12:54</div>
-                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
-                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
-                    </div>
-
-                    <div id="linkToOpenMore">
-                        <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
-                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
-                    </div>
-
+                <div class="NotExistRoutes" v-else>
+                    <h1>Пользователь пока не добавил маршруты</h1>
                 </div>
-                <div class="route">
-
-                    <img src="../assets/bike.svg" alt="bike">
-
-                    <div class="routeText">
-                        <div class="distance">Расстояние: 2,2km</div>
-                        <div class="time">Время: 01:12:54</div>
-                        <div class="authorName"><router-link to="/AuthorsProfile">Автор: Артем Степанов</router-link></div>
-                        <div class="rating">Оценка: 4,7 <img src="../assets/star.svg" alt="star"> </div>
-                    </div>
-
-                    <div id="linkToOpenMore">
-                        <router-link to="/ViewRoute" class="routerLinkStyle">Подробности</router-link>
-                        <router-link to="/ViewRoute"><img src="../assets/more.svg" alt="more"></router-link>
-                    </div>
-
-                </div>                                
+                                                
         </div>
+        
         <div class="usersInfo">
             <h1>Информация о пользователе</h1>
-            <h3>ФИО пользователя: {{userFIO}}</h3>
-            <h3>Общая дистанция маршрутов: {{totalDistance}}</h3>
-            <h3>Средний рейтинг маршрутов: {{avgRating}} <img src="../assets/star.svg"></h3>
-            <router-link to="/"><button class="returnBack" >Вернуться на главную страницу</button></router-link> 
+            <h3>ФИО пользователя:{{ this.otherUserInfo.surname }} {{ this.otherUserInfo.name }} {{ this.otherUserInfo.patronymic }}</h3>
+            <h3>Общая дистанция маршрутов: {{this.otherUserRoutesInfo.all_distance}}km</h3>
+            <h3>Общая длительность маршрутов: {{this.otherUserRoutesInfo.all_travel_time}}</h3>
+            <div v-if="this.otherUserRoutesInfo.all_avg_estimations === null" class="lackRating">
+                Средний рейтинг маршрутов: Оценки нет
+            </div>
+            <div v-else class="estimation">
+                <h3>Средний рейтинг маршрутов: {{this.otherUserRoutesInfo.all_avg_estimations}}<img src="../assets/star.svg" alt="star"></h3>
+            </div> 
         </div>
     </div>
     
@@ -67,15 +81,86 @@
 
 <script>
     export default{
+
         name: 'AuthorsProfile',
+
         data(){
             return{
-                    userFIO: 'Степанов Артем Андреевич',
+                    userRoutes: [],
+                    userName: '',
+                    userSurname: '',
+                    userPatronymic: '',
                     totalDistance: '2,2km',
-                    avgRating: '4,7'
+                    avgRating: '4,7',
+                    isExistRoutes: true,
+                    otherUserId: '',
+                    otherUserInfo: '',
+                    otherUserRoutesInfo: '',
+                    currentAuthStatus: false
                 }
-            }
-        };
+        },
+
+        created(){
+            if (localStorage.getItem('isAuthorized') === 'true'){
+                this.currentAuthStatus = true
+            } 
+            this.otherUserId = Number(localStorage.getItem('otherUserID'))
+            console.log(this.otherUserId)
+            this.getUsersRoutes()
+            this.getOtherUserInfo()
+        },
+
+        methods: {
+
+            //Получение маршрутов пользователя
+            async getUsersRoutes(){
+                try {
+                    const res = await fetch(`http://10.147.17.88:8000/users/${this.otherUserId}`)
+                    const data = await res.json()
+                    if (res.status === 200 || res.status === 201){
+                        this.userRoutes = data.data.routes
+                        console.log(this.userRoutes)
+                        console.log('getUsersRoutes() - Успешно')
+                    } else{
+                        alert('Ошибка!')
+                        this.errors = data
+                        console.error(data)
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
+            },
+
+            //Получение информации об авторе маршрута
+            async getOtherUserInfo(){
+                try {
+                    const res = await fetch(`http://10.147.17.88:8000/users/${this.otherUserId}`)
+                    const data = await res.json()
+                    if (res.status === 200 || res.status === 201){
+                        this.otherUserInfo = data.data.user,
+                        this.otherUserRoutesInfo = data.data
+                        if (this.otherUserRoutesInfo.routes === null){
+                            this.isExistRoutes = false
+                        }
+                        console.log(this.otherUserInfo)
+                        console.log(this.otherUserRoutesInfo)
+                        console.log('getOtherUserInfo() - Успешно')
+                    } else{
+                        alert('Ошибка!')
+                        this.errors = data
+                        console.error(data)
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
+            },
+
+            //Сохранение в локальном хранилище переменной routeID для дальнейего использования
+            saveRouteID(el){
+                localStorage.setItem('routeID', el)
+            }, 
+        }
+    }
 </script>
 
 <style scoped>
@@ -264,6 +349,60 @@
     background-color: #35cafc;
     color: #f0efef;
     border: 0;
+}
+
+.route .routeText .rating{
+    display: flex
+}
+
+.route .routeText .rating p{
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0px
+}
+
+.route .routeText .rating img{
+    display: block;
+    margin-top: 3px;
+    width: 15px;
+    height: 15px
+}
+
+.route .routeText .lackRating{
+    margin-top: 8px;
+}
+
+.usersInfo .lackRating{
+    margin: 25px 5px 45px 0px;
+    padding: 0px;
+    text-align: left;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.usersInfo .estimation{
+    display: flex;
+}
+
+.usersInfo .estimation p{
+    margin: 25px 5px 45px 0px;
+    padding: 0px;
+    text-align: left;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.NotExistRoutes h1{
+    margin-top: 25% !important;
+    font-size: 35px !important;
+    font-weight: 800 !important;
+    color: rgb(94, 94, 94) !important;
 }
 
 </style>

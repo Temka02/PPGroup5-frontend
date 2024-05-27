@@ -1,21 +1,45 @@
 <template>
     <div class="ViewRoute">
+        
          <div class="ViewInfo">
-            <!-- <img src="../assets/map1.jpg" alt="map1"> -->
-            <div class="imageOfRoute">
-                <div id="map"></div>
-            </div>
             
+            <div class="imageOfRoute">
+                <YandexMap></YandexMap>
+            </div>
+
             <div class="detailsOfRoute">
-                <h3>Дистанция: {{ routeDistance }}</h3>
-                <h3>Время: {{ routeDuration }}</h3>            
-                <h3><router-link to="/AuthorsProfile">Автор: {{ routeAuthor }}</router-link></h3>
-                <h3>Оценка:  {{ routeRating }}<img src="../assets/star.svg"></h3>
-                <button @click="addToWishlist()" id="addBtn" value="notAdded">Добавить в список желаемых маршрутов</button>
-                <button @click="removeFromWishlist()" id="removeBtn" value="notAdded">Удалить из списка желаемых маршрутов</button>
+                <h3>Дистанция: {{ this.routeINFO.distance }}km</h3>
+                <h3>Время: {{ this.routeINFO.users_travel_time }}</h3>            
+                <h3><router-link to="/AuthorsProfile" @click="saveUserID(Number(this.otherUserId))">Автор: {{ this.routeINFO.user_name }}</router-link></h3>
+                <div class="rating">
+                            <div v-if="this.routeINFO.avg_estimation === null">
+                                <h3>Пока никто не ставил оценку маршруту</h3>
+                            </div>
+                            <div v-else>
+                                <h3>Рейтинг маршрута:  {{ this.routeINFO.avg_estimation }}<img src="../assets/star.svg"></h3>
+                            </div> 
+                        </div>
+                
+                <div class="estimate" v-if="!(isConfirmedEst)">
+                    <label for="estimationInput">Ваша оценка?</label>
+                    <select id="estimationInput"
+                            v-model.trim="this.estimation">
+                        <option value="" disabled></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <button class="estimateBtn" @click="estimateBtn()">Подтвердить оценку</button>
+                </div>
+                <div class="urEst" v-else>
+                    <h3>Ваша оценка {{ this.estimation }}</h3>
+                </div>
             </div>
            
         </div>
+
         <router-link to="/" id="returnHome"><button class="returnBack" >Вернуться на главную страницу</button></router-link> 
         
     </div>
@@ -23,31 +47,120 @@
 </template>
 
 <script>
+import YandexMap from './YandexMap.vue'
 
     export default{
+
         name: 'ViewRoute',
+
+        components: {
+            YandexMap
+        },
+
         data(){
             return{
-                routeDistance: '',
-                routeDuration: '',
-                routeAuthor: '',
-                routeRating: ''
+                routeINFO: { 
+                },
+                responseEstimation: '',
+                estimation: '',
+                currentUrl: `http://10.147.17.60:8000/route/${this.routeId}`,
+                routeId: '',
+                userInfo: '',
+                userID: '',
+                otherUserId: '',
+                isConfirmedEst: false
             }
         },
-        methods: {
-            addToWishlist(){
-                 if (document.getElementById('addBtn').value == "notAdded"){
-                    document.getElementById('addBtn').classList.toggle("hideAddBtn")
-                    document.getElementById('removeBtn').classList.toggle("hideRemoveBtn")
-                 } 
-            },
-            removeFromWishlist(){
-                if (document.getElementById('removeBtn').value == "notAdded"){
-                    document.getElementById('addBtn').classList.remove("hideAddBtn")
-                    document.getElementById('removeBtn').classList.toggle("hideRemoveBtn")
-                 }
 
-            }
+        created(){
+            this.otherUserId = localStorage.getItem('otherUserID')
+            this.userInfo = JSON.parse(localStorage.getItem('user'))
+            this.userID = Number(this.userInfo.data.user.id)
+            this.routeId = Number(localStorage.getItem('routeID'))
+            console.log(this.userID);
+            this.getRouteInfo()
+            this.getEstimation()
+            console.log('userID - ' + this.userID)
+            
+        },
+
+        methods: {
+
+            //Сохранение переменной otherUserId в локальном хранилище для дальнейшего испольования
+            saveUserID(el){
+                localStorage.setItem('otherUserID', el)
+            },   
+
+            //Отправка на сервер поставленной оценки, последующее ее сохранение и отображение на странице
+            async sendEstimate(){
+                try {
+                    const response = await fetch(`http://10.147.17.88:8000/routes/${this.routeId}/estimation?user_id=${this.userID}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            route_id: Number(this.routeId),
+                            estimation: Number(this.estimation),
+                            comment: null
+                        })
+                        })
+                    const result = await response.json()
+                    if (response.status === 200 || response.status === 201){
+                        console.log('sendEstimate() - Успешно');
+                        console.log('Я поставил оценку - ' + this.estimation);
+                        this.getRouteInfo()
+                    } else{
+                        alert('Ошибка! Перепроверьте введеные данные')
+                        this.errors = result
+                        console.error(result)
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
+            },
+
+            //Получение информации о просматриваемом маршруте
+            async getRouteInfo(){
+                try {
+                    const res = await fetch(`http://10.147.17.88:8000/route/${this.routeId}`)
+                    const data = await res.json()
+                    if (res.status === 200 || res.status === 201){
+                        this.routeINFO = data.data.route
+                    } else{
+                        alert('Ошибка!')
+                        this.errors = data
+                        console.error(data)
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
+            },
+
+            //Получение информации об поставленной данному маршруту оценке
+            async getEstimation(){
+                try {
+                    const res = await fetch(`http://10.147.17.88:8000/routes/${this.routeId}/estimation?user_id=${this.userID}`)
+                    const data = await res.json()
+                    if (res.status === 200 || res.status === 201){
+                        this.responseEstimation = data
+                        this.estimation = this.responseEstimation.data.my_estimation_value
+                        if (this.estimation === 1 || this.estimation === 2 || this.estimation === 3 || this.estimation === 4 || this.estimation === 5 ){
+                            this.isConfirmedEst = true
+                        }
+                    } else{
+                        alert('Ошибка!')
+                        this.errors = data
+                        console.error(data)
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
+            },
+
+            //Подтверждение отправки оценки на сервер
+            estimateBtn(){
+                this.sendEstimate()
+                this.isConfirmedEst = true
+            }   
         },
     }
 </script>
@@ -82,16 +195,16 @@
 }
 
 .imageOfRoute{
-    height: 470px;
+    height: 464.8px;
     width: 62%;
     margin-left: 30px;
+    border: 3px solid #d6d6d6dd;
+    border-radius: 5px;
 }
 
-.imageOfRoute img{
-    height: 466px;
-    width: 100%;
-    border: 2px solid #d6d6d6dd;
-    border-radius: 5px;
+.imageOfRoute .__ymap{
+    height: 464.5px !important;
+    width: 100% !important;
 }
 
 .detailsOfRoute{
@@ -194,6 +307,75 @@
     border: 2px solid #efefef ;
     border-radius: 8px ;
     cursor: pointer ;
+}
+
+.estimate{
+    font-family: "Roboto Slab", serif ;
+    font-optical-sizing: auto ;
+    font-weight: 600 ;
+    font-size: 20px ;
+    margin: 25px 17px ;
+}
+
+.estimate select{
+    font-family: "Roboto Slab", serif ;
+    font-optical-sizing: auto ;
+    font-weight: 700 ;
+    font-size: 15px ;
+    margin-left: 10px;
+    width: 50px;
+    height: 25px;
+    text-align: center;
+    border: 2.5px solid #35cafc;
+    border-radius: 4px;
+}
+
+.estimateBtn{
+    display: block;
+    width: 30%;
+    height: 55px;
+    padding: 5px;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 10px;
+    background-color: #b8fdd4;
+    border: 2px solid #464646;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.confirmedEst{
+    display: none !important;
+}
+
+.responses{
+    display: flex;
+    justify-content: space-between;
+}
+
+.urEst{
+    display: block;
+}
+
+.urEst h3{
+    margin-top: 100px;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-size: 35px;
+    color: #2483a2;
+}
+
+.app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 
 </style>

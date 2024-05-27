@@ -14,5 +14,6 @@
 img{
     height: 100%;
     width: 100%;
+    border: 3.5px solid #eeeeeedd;
 }
 </style>
